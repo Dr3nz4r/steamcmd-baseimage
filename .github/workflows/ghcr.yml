@@ -10,35 +10,54 @@
 #
 # For more support on how to run the workflow, please visit https://github.com/google-github-actions/setup-gcloud/tree/master/example-workflows/gke
 
-name: Build and Deploy to GKE
+name: Publish Docker Image
 
 on:
   workflow_dispatch:
   release:
     types: [created]
-  
-  
-
-
-env:
-  IMAGE: steamcmd-baeimage
-  PROJECT_ID: Dr3nz4r
 
 jobs:
-  setup-build-publish-deploy:
-    name: Setup, Build, Publish, and Deploy
-    runs-on: ubuntu-latest
+  push:
+    name: Push
+    runs-on: ubuntu-20.04
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Code Checkout
+        uses: actions/checkout@v2
 
-    - name: Docker Login
-      # You may pin to the exact commit or the version.
-      # uses: docker/login-action@f3364599c6aa293cdc2b8391b1b56d0c30e45c8a
-      uses: docker/login-action@v1.8.0
+      - name: Docker Meta
+        id: docker_meta
+        uses: crazy-max/ghaction-docker-meta@v1
+        with:
+          images: ghcr.io/pterodactyl/wings
 
-    - name: Build and push Docker images
-      # You may pin to the exact commit or the version.
-      # uses: docker/build-push-action@4a531fa5a603bab87dfa56578bd82b28508c9547
-      uses: docker/build-push-action@v2.2.2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Install buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: v0.5.1
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.REGISTRY_TOKEN }}
+
+      - name: Get Build Information
+        id: build_info
+        run: |
+          echo "::set-output name=version_tag::${GITHUB_REF/refs\/tags\//}"
+          echo "::set-output name=short_sha::$(git rev-parse --short HEAD)"
+
+      - name: Release Production Build
+        uses: docker/build-push-action@v2
+        with:
+          build-args: |
+            VERSION=${{ steps.build_info.outputs.version_tag }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
+          push: true
+          tags: ${{ steps.docker_meta.outputs.tags }}
