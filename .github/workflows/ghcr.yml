@@ -13,8 +13,12 @@
 name: Build and Deploy to GKE
 
 on:
+  workflow_dispatch:
   release:
     types: [created]
+  
+  
+
 
 env:
   IMAGE: steamcmd-baeimage
