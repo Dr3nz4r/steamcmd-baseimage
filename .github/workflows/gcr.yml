@@ -1,0 +1,21 @@
+name: Build and Deploy
+
+on:
+  release:
+    types: [created]
+
+env:
+  IMAGE: steamcmd-baseimage
+
+jobs:
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish, and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    #build & push
+    - name: GitHub Container Registry Docker Action
+      uses: trentjones21/github-docker@master
