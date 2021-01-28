@@ -17,8 +17,9 @@ jobs:
       uses: actions/checkout@v2
     
     #build & push
-    - name: GitHub Container Registry Docker Action
-      uses: trentjones21/github-docker@master  
+    - name: Publish Image
+      uses: matootie/github-docker@v3.0.0
+      id: publish
       with:
         accessToken: ${{ github.token }}
-        tag: latest
+        tag: ${{ github.sha }}
