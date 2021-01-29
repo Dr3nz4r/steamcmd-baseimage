@@ -11,7 +11,7 @@ ENV         DEBIAN_FRONTEND noninteractive
 RUN         dpkg --add-architecture i386 \
             && apt-get update \
             && apt-get upgrade -y \
-            && apt-get -y install net-tools iproute2 wget locales procps lib32gcc1 lib32stdc++6 lib32stdc++6 lib32tinfo6 libncurses6 libprocps7 lib32tinfo6 libncurses5 ncurses libtinfo5  \
+            && apt-get -y install net-tools iproute2 wget locales procps lib32gcc1 lib32stdc++6 lib32stdc++6 lib32tinfo6 libncurses6 libprocps7 lib32tinfo6 libncurses5 libtinfo5  \
             && touch /etc/locale.gen \
             && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
             && locale-gen \
