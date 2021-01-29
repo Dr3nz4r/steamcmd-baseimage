@@ -61,4 +61,4 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
-          github-token:: ${{ secrets.REGISTRY_TOKEN }}
+          github-token: ${{ secrets.REGISTRY_TOKEN }}
