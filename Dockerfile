@@ -13,10 +13,10 @@ RUN         dpkg --add-architecture i386 \
             && apt-get upgrade -y \
             && apt-get -y install --no-install-recommends wget locales procps lib32gcc1 lib32stdc++6 lib32stdc++6 lib32tinfo6 \
             && touch /etc/locale.gen \
-	&& echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
-	&& locale-gen && \
-	&& apt-get -y install --reinstall ca-certificates \
-	&& rm -rf /var/lib/apt/lists/* \            
+            && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+            && locale-gen \
+            && apt-get -y install --reinstall ca-certificates \
+            && rm -rf /var/lib/apt/lists/* \            
             && useradd -m -d /home/container container
 
 ENV LANG=en_US.UTF-8
