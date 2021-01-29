@@ -30,7 +30,7 @@ jobs:
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
-          images: ghcr.io/dr3nz4r/steamcmd-baseimage
+          images: ghcr.io/Dr3nz4r/steamcmd-baseimage
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -54,10 +54,11 @@ jobs:
           echo "::set-output name=short_sha::$(git rev-parse --short HEAD)"
 
       - name: Release Production Build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v2.2.2
         with:
           build-args: |
             VERSION=${{ steps.build_info.outputs.version_tag }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
+          github-token:: ${{ secrets.REGISTRY_TOKEN }}
