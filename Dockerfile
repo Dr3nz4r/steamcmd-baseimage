@@ -11,7 +11,7 @@ ENV         DEBIAN_FRONTEND noninteractive
 RUN         dpkg --add-architecture i386 \
             && apt-get update \
             && apt-get upgrade -y \
-            && apt-get install -y wget locales procps lib32gcc1 lib32stdc++6 lib32stdc++6 \
+            && apt-get install -y wget locales procps lib32gcc1 lib32stdc++6 lib32stdc++6 lib32tinfo5 \
             && useradd -m -d /home/container container
 
 USER        container
