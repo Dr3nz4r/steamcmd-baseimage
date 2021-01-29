@@ -17,6 +17,8 @@ if [ ! -z ${SRCDS_APPID} ]; then
     fi
 fi
 
+cp -R ./steamcmd/linux32/* ./.steam/sdk32/
+
 # Replace Startup Variables
 MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
 echo ":/home/container$ ${MODIFIED_STARTUP}"
