@@ -11,7 +11,7 @@ ENV         DEBIAN_FRONTEND noninteractive
 RUN         dpkg --add-architecture i386 \
             && apt-get update \
             && apt-get upgrade -y \
-            && apt-get -y install net-tools iproute2 wget locales procps lib32gcc1 lib32stdc++6 lib32stdc++6 lib32tinfo6 libncurses6 libprocps7 lib32tinfo6 libncurses5 ncurses-bin \
+            && apt-get -y install ca-certificates curl g++ gcc gcc-8-base glibc iproute2 lib32* lib32gcc1 lib32stdc* lib32stdc++ lib32stdc++6 lib32tinfo6 lib32z1 libc-bin libncurses5 libncurses6 libncursesw5 libprocps7 libstdc++6 libtinfo5 libxcursor1 libxext6 libxft2 libxft2:i386 libxinerama1 locales ncurses-bin net-tools procps wget \
             && touch /etc/locale.gen \
             && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
             && locale-gen \
