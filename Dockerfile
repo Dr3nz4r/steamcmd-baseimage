@@ -11,7 +11,8 @@ ENV         DEBIAN_FRONTEND noninteractive
 RUN         dpkg --add-architecture i386 \
             && apt-get update \
             && apt-get upgrade -y \
-            && apt-get -y install ca-certificates curl g++ gcc tmux iproute2 lib32gcc1 libstdc++5 libstdc++5:i386 lib32z1 libncurses5 libncursesw5 libprocps7 libtinfo5 libxcursor1 libxext6 libxft2 libxft2:i386 libxinerama1 locales net-tools procps wget gdebi-core software-properties-common gdb lib32stdc++ libtinfo5:i386 libtinfo5 libncurses5:i386 libcurl3-gnutls:i386 libtinfo5:i386 libncurses5:i386 libjpeg62:i386 libxext6:i386 libxinerama1:i386 libstdc++6:i386 libncursesw5:i386 libxcursor1:i386 \
+#            && apt-get -y install ca-certificates curl g++ gcc tmux iproute2 lib32gcc1 libstdc++5 libstdc++5:i386 lib32z1 libncurses5 libncursesw5 libprocps7 libtinfo5 libxcursor1 libxext6 libxft2 libxft2:i386 libxinerama1 locales net-tools procps wget gdebi-core software-properties-common gdb lib32stdc++ libtinfo5:i386 libtinfo5 libncurses5:i386 libcurl3-gnutls:i386 libtinfo5:i386 libncurses5:i386 libjpeg62:i386 libxext6:i386 libxinerama1:i386 libstdc++6:i386 libncursesw5:i386 libxcursor1:i386 \
+            && apt-get -y install --no-install-recommends ca-certificates curl procps wget locales g++ gcc tmux lib32gcc1 lib32stdc++6 libtinfo5 libncurses5 libtinfo5:i386 libncursesw5 libstdc++5 libstdc++5:i386 libxft2 libxft2:i386 lib32stdc++ libncurses5:i386 libcurl3-gnutls:i386 libjpeg62:i386 libxext6:i386 libxinerama1:i386 libstdc++6:i386 libncursesw5:i386 libxcursor1:i386
             && touch /etc/locale.gen \
             && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
             && locale-gen \
