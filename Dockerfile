@@ -11,7 +11,7 @@ ENV         DEBIAN_FRONTEND noninteractive
 RUN         dpkg --add-architecture i386 \
             && apt-get update \
             && apt-get upgrade -y \
-            && apt-get -y install ca-certificates curl g++ gcc tmux gcc-8-base iproute2 lib32gcc1 libstdc++5 lib32stdc++6 libstdc++6 lib32tinfo6 lib32z1 libc-bin libncurses5 libncurses6 libncursesw5 libprocps7 libstdc++6 libtinfo5 libxcursor1 libxext6 libxft2 libxft2:i386 libxinerama1 locales ncurses-bin net-tools procps wget \
+            && apt-get -y install ca-certificates curl g++ gcc tmux gcc-8-base iproute2 lib32gcc1 libstdc++5 lib32stdc++6 libstdc++6 lib32tinfo6 lib32z1 libc-bin libncurses5 libncurses6 libncursesw5 libprocps7 libtinfo5 libxcursor1 libxext6 libxft2 libxft2:i386 libxinerama1 locales ncurses-bin net-tools procps wget gdebi-core software-properties-common gdb ia32-libs lib32stdc++ pushd lib32tinfo5 lib64tinfo5 lib32ncurses5 lib32bz2-1.0 ncurses lib32stdc* libcurl3-gnutls:i386 ncurses5-compat-libs libcurl.i686 libtinfo5:i386 libncurses5:i386 libpng12-0:i386 libjpeg62:i386 libxext6:i386 libxinerama1:i386 libstdc++6:i386 libncursesw5:i386 libxcursor1:i386 glibc \
             && touch /etc/locale.gen \
             && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
             && locale-gen \
