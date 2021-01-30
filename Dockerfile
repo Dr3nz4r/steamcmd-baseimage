@@ -4,7 +4,7 @@
 # Minimum Panel Version: 0.6.0
 # ----------------------------------
 #FROM        debian:buster-slim
-FROM        ubuntu:bionic
+FROM        ubuntu:focal
 
 ENV         DEBIAN_FRONTEND noninteractive
 
