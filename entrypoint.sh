@@ -18,8 +18,8 @@ if [ ! -z ${SRCDS_APPID} ]; then
 fi
 
 # SETUP BINARIES FOR x32 and x64 bits
-cp -R ./steamcmd/linux32/* ./.steam/sdk32/
-cp -R ./steamcmd/linux64/* ./.steam/sdk64/
+#cp -R ./steamcmd/linux32/* ./.steam/sdk32/
+#cp -R ./steamcmd/linux64/* ./.steam/sdk64/
 
 # Replace Startup Variables
 MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
