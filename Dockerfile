@@ -13,6 +13,8 @@ RUN         dpkg --add-architecture i386 \
             && apt-get upgrade -y \
             && apt-get -y install --no-install-recommends lib32gcc1 lib32stdc++6
             
+RUN         ulimit -n 2048
+
 # CLEAN UP
 RUN         apt-get clean
 RUN         rm -rf /tmp/* /var/lib/apt/lists/*
